@@ -1,0 +1,5 @@
+name: "manager_skill"
+title: "Manager Skill"
+description: "Quy trình làm việc của May (Manager): quản lý sản xuất phim ngắn AI và vận hành kênh cho anh TinTin — từ brainstorm, kịch bản, SEO, cầu nối Drive với cộng tác viên, đăng phim, ghim bình luận, gửi Zalo đến trả tương tác và hóa đơn điện tử."
+category: "Work and knowledge"
+include_in_prompt: true
