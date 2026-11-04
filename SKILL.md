@@ -45,7 +45,7 @@ Skill này đóng gói toàn bộ quy trình làm việc của May (Manager): tr
 - Quyền tải file lên Drive: không cần xin phép anh từng lần. Chia sẻ thư mục cho người khác: vẫn cần anh cho Gmail + duyệt bảng chia sẻ trước.
 - Lệnh Drive CLI hay dùng (binary /opt/hatch/bin/hatch_gws_cli):
   - Tải file thật: `drive files get --params '{"fileId":"<id>","alt":"media"}' -o <đường dẫn>` — lệnh `files download` chỉ trả metadata và tạo file 0 byte, không dùng.
-  - Cập nhật file tại chỗ: `drive files update --params '{"fileId":"<id>"}' --upload <file local> --upload-content-type text/markdown`.
+  - Cập nhật file tại chỗ: `drive files update --params '{"fileId":"<id>"}' --upload <file local> --upload-content-type 'text/markdown'`.
   - Tải file mới lên: `drive +upload <file local> --parent <folderId>`.
   - Tạo thư mục: `drive files create --json '{"name":"...","mimeType":"application/vnd.google-apps.folder","parents":["<parentId>"]}'`.
 
@@ -98,7 +98,7 @@ Skill này đóng gói toàn bộ quy trình làm việc của May (Manager): tr
 
 ## 9. Quy tắc text, nút copy và hóa đơn
 
-- **Nút copy**: mọi text soạn để anh dùng ở nơi khác (tin nhắn, email, nội dung đăng bài, gói SEO) đều phải kèm nút copy riêng từng mục, không chỉ đưa text thô. Không bao giờ nhúng text vào thuộc tính HTML `data-copy` (dấu ngoặc kép sẽ phá thuộc tính và nút hỏng lặng). Text nằm trong phần tử, nút copy qua `innerText` với id đích. Nút chỉ báo "đã copy" khi thao tác ghi clipboard thật sự thành công: xử lý promise của `navigator.clipboard.writeText`, dự phòng bằng `execCommand(copy)` qua textarea tạm, và khi thất bại hoàn toàn thì bôi đen đoạn text bằng Range để anh copy tay.
+- **Nút copy**: mọi text soạn để anh dùng ở nơi khác (tin nhắn, email, nội dung đăng bài, gói SEO) đều phải kèm nút copy riêng từng mục, không chỉ đưa text thô. Không bao giờ nhúng text vào thuộc tính HTML `data-copy` (dấu ngoặc kép sẽ phá thuộc tính và nút hỏng lặng). Text nằm trong phần tử, nút copy qua `innerText` với id đích. Nút chỉ báo "đã copy" khi thao tác ghi clipboard thật sự thành công: xử lý promise của `navigator.clipboard.writeText`, dự phòng bằng `execCommand('copy')` qua textarea tạm, và khi thất bại hoàn toàn thì bôi đen đoạn text bằng Range để anh copy tay.
 - **Hóa đơn điện tử**: cron kiểm tra Gmail mỗi giờ. Có hóa đơn điện tử thật mới thì BÁO NGAY cho anh, đồng thời FORWARD cho tranthihangngadl2021@gmail.com (Nga) với nội dung đúng câu "Nga! cập nhật hóa đơn giúp anh em nhé!", giữ nguyên đính kèm gốc, mỗi email chỉ forward một lần duy nhất. Hóa đơn cũ đã thấy không forward lại. Khi báo cho anh thì nói thêm là đã forward cho Nga rồi; forward lỗi thì báo rõ để anh xử lý tay. Email nhắc thuế chung chung không phải hóa đơn thì chỉ đánh dấu đã thấy, không báo.
 
 ## 10. Bài học xương máu — không lặp lại
